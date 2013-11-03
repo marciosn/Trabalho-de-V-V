@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+    <h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    		<title>Buscar Cliente</title>
+    		<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+    <style>
+      body{
+				margin: 20px;
+			}
+			.container{
+			margin-top: 80px;
+			}
+
+    </style>
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="bootstrap-responsive.css"></h:outputStylesheet>
+	<h:outputScript library="js" name="jquery.js"></h:outputScript>
+	<h:outputScript library="js" name="bootstrap.js"></h:outputScript>
+    </h:head>
+ 
+    <h:body>
+    <ui:insert name="conteudo">
+			<ui:include src="/WEB-INF/templates/topo.xhtml" />
+		</ui:insert>
+    <div class="container">
+    
+    	<h1><h:outputText value="Buscar Cliente" />	</h1>
+		<legend></legend>
+		<h:form>
+			<h:messages />	
+		<h:panelGrid columns="2">
+			<h:outputLabel for="buscacliente" value="Cliente a ser Buscado" /> 
+			<h:inputText id="buscacliente" label="buscacliente" required="true" value="#{aluguelBean.busca}" class="input-xxlarge"/>
+			
+		</h:panelGrid>
+		<div class="form-actions">
+			<h:commandButton id="Salvar" class="btn btn-inverse" value="Buscar" action="#{aluguelBean.buscarCliente}" />
+			
+		</div>
+		<h1>
+		<h:outputText value="CLIENTE BUSCADO" />
+		</h1>
+		<legend></legend>
+		<h:panelGrid columns="2">
+			<h:outputLabel for="nome" value="Nome do Cliente" />
+			<h:inputText  value="#{aluguelBean.cliente.nome}" />
+			
+			<h:outputLabel for="cpf" value="CPF Cliente" /> 
+			<h:inputText  value="#{aluguelBean.cliente.cpf}" class="uneditable-input input-xxlarge"/>
+			
+			<h:outputLabel for="email" value="Email do Cliente" />
+			<h:inputText  value="#{aluguelBean.cliente.email}" class="uneditable-input input-xxlarge"/>
+			
+			<h:outputLabel for="endereco" value="Endereço do Cliente" />
+			<h:inputText  value="#{aluguelBean.cliente.endereco}" class="uneditable-input input-xxlarge"/>
+			
+			<h:outputLabel for="telefone" value="Telefone do Cliente" />
+			<h:inputText  value="#{aluguelBean.cliente.telefone}" class="uneditable-input input-xxlarge"/>
+			
+		</h:panelGrid>
+		
+		</h:form>
+	</div>
+    </h:body>
+</html>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+    <h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    		<title>Alugar</title>
+    		<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+    <style>
+      .red{
+      color: #FF0000;
+      }
+      .cliente{
+      
+      }
+      body{
+				margin: 20px;
+			}
+			.container{
+			margin-top: 80px;
+			}
+		.titulo{
+		background-color: #CCCCCC;
+		border-radius: 3px;
+		}
+		.cliente{
+		background-color: #CCCCCC;
+		border-radius: 3px;
+		margin-bottom: 10px;
+		}
+	.aluguel{
+		background-color: #CCCCCC;
+		border-radius: 3px;
+		margin-top: 10px;
+		}
+      
+    </style>
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="bootstrap-responsive.css"></h:outputStylesheet>
+	<h:outputScript library="js" name="jquery.js"></h:outputScript>
+	<h:outputScript library="js" name="bootstrap.js"></h:outputScript>
+    </h:head>
+ 
+    <h:body>
+    <ui:insert name="conteudo">
+			<ui:include src="/WEB-INF/templates/topo.xhtml" />
+		</ui:insert>
+    <div class="container">
+    
+    
+		<h1>Cadastrar Aluguel</h1>
+		<legend></legend>
+		<h:messages />
+			
+		<h:form>
+		<h:commandButton id="botao" class="btn btn-primary" value="Buscar Cliente" action="pegaCliente" />
+		<h:commandButton id="botao2" class="btn btn-primary" value="Buscar Cópia" action="pegaCopia" />
+		</h:form>
+		
+		<div class="cliente">
+				
+		<h:panelGrid columns="2">
+		
+			<h:outputLabel for="idcliente" value="ID Cliente" />
+			<h:outputText id="idcliente" label="idcliente" required="true" value="#{aluguelBean.idc}" class="uneditable-input "/>
+			<h:outputLabel for="nomecliente" value="Nome do Cliente" />
+			<h:outputText id="nomecliente" label="idcliente" required="true" value="#{aluguelBean.nome}" class="uneditable-input" />
+			<h:outputLabel for="cpfcliente" value="CPF do Cliente" />
+			<h:outputText id="cpfcliente" label="cpfcliente" required="true" value="#{aluguelBean.cpf}" class="uneditable-input"/>
+		</h:panelGrid>
+		</div>
+		
+		<div class="titulo">
+		
+		<h:panelGrid columns="2">
+		
+			<h:outputLabel for="idcliente" value="ID da Copia" />
+			<h:outputText id="idtitulo" label="idtitulo" required="true" value="#{aluguelBean.aluguel.idCopia}" class="uneditable-input"/>
+			<h:outputLabel for="nometitulo" value="Titulo da Cópia" />
+			<h:outputText id="nometitulo" label="idcliente" required="true" value="#{aluguelBean.nome2}" class="uneditable-input"/>
+		</h:panelGrid>
+		
+	</div>
+		
+		
+		<h:form>
+		
+		<div class="aluguel">
+		<h:panelGrid columns="2">
+			<h:outputLabel for="copiaid" value="ID da Copia" /> 
+			<h:inputText id="copiaid" label="copiaid" required="true" value="#{aluguelBean.aluguel.idCopia}" />
+			<h:outputLabel for="clienteid" value="Id do Cliente" />
+			<h:inputText id="clienteid" label="clienteid" required="true" value="#{aluguelBean.idc}"  />
+			<h:outputLabel for="dataaluguel" value="Data de Aluguel" />
+			<h:inputText id="dataaluguel" label="dataaluguel" required="true" value="#{aluguelBean.aluguel.dataAluguel}" maxlength="10"/>		
+			<h:outputLabel for="datadevolver" value="Data Devolução" />
+			<h:inputText id="datadevolver" label="datadevolver" required="true" value="#{aluguelBean.aluguel.dataDevolucao}" maxlength="10"/>
+							
+		</h:panelGrid>
+		<h:commandButton id="alugar4" class="btn btn-primary" value="Realizar Aluguel" action="#{aluguelBean.alugar}" >
+		
+		</h:commandButton>
+		</div>
+		</h:form>
+
+	</div>
+    </h:body>
+</html>

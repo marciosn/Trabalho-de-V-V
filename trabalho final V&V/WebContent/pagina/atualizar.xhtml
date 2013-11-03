@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+    <h:head>
+    		<title>Atualizar  Titulos</title>
+    		<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+    		<h:outputStylesheet library="css" name="bootstrap-responsive.css"></h:outputStylesheet>
+			<h:outputScript library="js" name="jquery.js"></h:outputScript>
+			<h:outputScript library="js" name="bootstrap.js"></h:outputScript>
+			
+			<style type="text/css">
+			
+			body{
+				margin: 20px;
+			}
+			.container{
+			margin-top: 100px;
+			}
+			</style>
+    </h:head>
+ 
+    <h:body>
+        <ui:insert name="conteudo">
+			<ui:include src="/WEB-INF/templates/topo.xhtml" />
+		</ui:insert>
+    <div class="container">
+    <h1>Atualizar Titulo</h1>
+		<legend></legend>
+    	<h:messages />
+    		<h:form >
+		<h:panelGrid columns="2">
+			<h:outputLabel for="TitulodoFilme" value="Titulo do Filme" /> 
+			<h:inputText value="#{titulosBean.titulo2.titulo}" required="true" class="input-xlarge"/>
+			<h:outputLabel for="GenerodoFilme" value="Genero do Filme" />
+			<h:inputText  value="#{titulosBean.titulo2.genero}" required="true" class="input-xlarge"/>
+			<h:outputLabel for="ID" value="ID" />
+			<h:inputText value="#{titulosBean.titulo2.id}" class=" uneditable-input" />
+			
+		</h:panelGrid>
+			<div class="form-actions">
+			<h:commandButton id="Salvar" class="btn btn-inverse" value="Salvar" action="#{titulosBean.atualiza}" >
+			<f:setPropertyActionListener target="#{titulosBean.titulo2.id}" value="#{titulosBean.titulo2.id}" />
+			</h:commandButton>
+			<h:commandButton id="Cancelar" class="btn btn-info" value="Cancelar" action="listar" />
+			</div>
+		</h:form>
+		</div> 
+    </h:body>
+</html>

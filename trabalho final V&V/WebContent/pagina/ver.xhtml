@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+    <h:head>
+    		<title>Atualizar  Titulos</title>
+    		<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+    		<h:outputStylesheet library="css" name="bootstrap-responsive.css"></h:outputStylesheet>
+			<h:outputScript library="js" name="jquery.js"></h:outputScript>
+			<h:outputScript library="js" name="bootstrap.js"></h:outputScript>
+			
+			<style type="text/css">
+			
+			body{
+				margin: 20px;
+			}
+			</style>
+    </h:head>
+ 
+    <h:body>
+    			<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel for="titulo" value="Titulo do Filme" /> 
+			<h:inputText value="#{titulosBean.titulo2.titulo}" disabled="true" />
+			<h:outputLabel for="genero" value="Genero do Filme" />
+			<h:inputText value="#{titulosBean.titulo2.genero}" disabled="true" />
+			<h:outputLabel for="id" value="ID " />
+			<h:inputText value="#{titulosBean.titulo2.id}" disabled="true" />
+						
+		</h:panelGrid>
+		<div class="form-actions">
+		<h:commandButton id="back" class="btn btn-inverse" value="Voltar" action="lista" />
+		</div>
+		</h:form>
+    </h:body>
+</html>

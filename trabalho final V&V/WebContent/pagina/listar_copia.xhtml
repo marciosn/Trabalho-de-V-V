@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+    <h:head>
+    		<title>Listar Copias</title>
+    		<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+    		<h:outputStylesheet library="css" name="bootstrap-responsive.css"></h:outputStylesheet>
+			<h:outputScript library="js" name="jquery.js"></h:outputScript>
+			<h:outputScript library="js" name="bootstrap.js"></h:outputScript>
+			<style type="text/css">
+			
+			body{
+				margin: 20px;
+			}
+			.container{
+			margin-top: 80px;
+			}
+
+			</style>
+    		
+    </h:head>
+ 
+    <h:body>
+		        <ui:insert name="conteudo">
+			<ui:include src="/WEB-INF/templates/topo.xhtml" />
+		</ui:insert>
+    <div class="container">
+    	<h1>Lista Copias</h1>
+		<legend></legend>
+		<h:form>
+ 		<h:commandButton value="Listar Titulos" action="listar" styleClass="btn btn-primary"/>				
+ 		</h:form>
+			<h:dataTable styleClass="table table-striped table-bordered table-hover" 
+			value="#{repositorioCopia.copias}" var="copia">
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="ID" class="label label-info" />
+				</f:facet>
+				<h:outputText value="#{copia.id}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Titulo da Copia" class="label label-info"/>
+				</f:facet>
+				<h:outputText value="#{copia.titulo}" />
+			</h:column>
+			 <h:column>
+				<f:facet name="header">
+					<h:outputText value="Estado" class="label label-info"/>
+				</f:facet>
+				<h:outputText value="#{copia.estado}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Ações" class="label label-info"/>
+				</f:facet>
+				<h:form>
+				<div class="btn-group">
+								
+				<h:commandButton value="Atualizar" action="atualizarCopia" styleClass="btn btn btn-small btn-primary">
+				<f:setPropertyActionListener target="#{titulosBean.copia2.titulo}" value="#{copia.titulo}" />
+				<f:setPropertyActionListener target="#{titulosBean.copia2.estado}" value="#{copia.estado}" />
+				<f:setPropertyActionListener target="#{titulosBean.copia2.id}" value="#{copia.id}" />
+				</h:commandButton>
+				
+				<h:commandButton value="Apagar Copia" action="#{titulosBean.excluiCopia}" styleClass="btn btn btn-small btn-primary"
+				onclick="return confirm ('CONFIRME PARA DELETAR O CONTATO?')">
+				<f:setPropertyActionListener target="#{titulosBean.indice}" value="#{copia.id}" />
+				</h:commandButton>
+				</div>
+				</h:form>
+			</h:column>
+		</h:dataTable>
+		 <h:form>
+ 		<h:commandButton value="Listar Titulos" action="listar" styleClass="btn btn-primary"/>				
+ 		</h:form>
+	
+ 		</div>
+
+ 
+    </h:body>
+</html>

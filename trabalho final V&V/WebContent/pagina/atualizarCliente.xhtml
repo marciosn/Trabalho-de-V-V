@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+    <h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    		<title></title>
+<style type="text/css">
+			
+			body{
+				margin: 5px;
+			}
+			.container{
+			margin-top: 80px;
+			}
+
+			</style>
+    </h:head>
+ 
+    <h:body>
+    <ui:insert name="conteudo">
+			<ui:include src="/WEB-INF/templates/topo.xhtml" />
+		</ui:insert>
+
+<div class="container">
+    
+    <h1>Editar Cliente</h1>
+		<legend><h:outputText value="#{clienteBean.cliente2.nome}" /></legend>
+		
+		<h:panelGroup rendered="#{facesContext.validationFailed}">
+			<div class="alert alert-info">
+  			<button type="button" class="close" data-dismiss="alert">
+  			<i class="icon-thumbs-up" >x</i>
+  			</button>
+  			<strong>Sinto Muito!!!</strong> O preenchimento dos campos é necessário ..
+  			
+		</div>
+		
+		</h:panelGroup>
+		
+		<h:form >
+		<h:panelGrid columns="2">
+			<h:outputLabel for="Nome" value="Nome" /> 
+			<h:inputText id="nome" value="#{clienteBean.cliente2.nome}" required="true" class="input-xxlarge" /> 
+			<h:outputLabel for="Email" value="Email" />
+			<h:inputText id="email" value="#{clienteBean.cliente2.email}" required="true"  class="input-xxlarge"/>
+			<h:outputLabel for="endereco" value="Endereço" />
+			<h:inputText id="data" value="#{clienteBean.cliente2.endereco}" required="true" class="input-xxlarge"/> 
+			<h:outputLabel for="Telefone" value="Telefone" />
+			<h:inputText id="telefone" value="#{clienteBean.cliente2.telefone}" required="true" /> 
+			<h:outputLabel for="cpf" value="CPF" />
+			<h:inputText id="cpf" value="#{clienteBean.cliente2.cpf}" class=" uneditable-input" />
+			<h:outputLabel for="ID" value="ID:" />
+			<h:inputText id="id" value="#{clienteBean.cliente2.idCliente}" class=" uneditable-input" /> 
+		</h:panelGrid>
+			<div class="form-actions">
+			<h:commandButton id="Salvar2" class="btn btn-inverse" value="Salvar" action="#{clienteBean.editarCliente}" >
+			<f:setPropertyActionListener target="#{clienteBean.cliente2.idCliente}" value="#{clienteBean.cliente2.idCliente}" />
+			</h:commandButton>
+			<h:commandButton id="Cancelar" class="btn btn-info" value="Cancelar" action="listarCliente" />
+			</div>
+		</h:form>
+			<div class="progress progress-striped active">
+  			<div class="bar" style="width: 45%;"></div>
+			</div>
+</div>
+
+    </h:body>
+</html>

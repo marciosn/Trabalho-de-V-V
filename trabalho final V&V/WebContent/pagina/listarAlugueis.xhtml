@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+    <h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    		<title>Listar Alugueis</title>
+
+	<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="bootstrap-responsive.css"></h:outputStylesheet>
+	<h:outputScript library="js" name="jquery.js"></h:outputScript>
+	<h:outputScript library="js" name="bootstrap.js"></h:outputScript>
+	<style>
+      body{
+				margin: 20px;
+			}
+			.container{
+			margin-top: 80px;
+			}
+
+    </style>
+ </h:head>
+    <h:body>
+
+	<ui:insert name="conteudo">
+			<ui:include src="/WEB-INF/templates/topo.xhtml" />
+		</ui:insert>
+		
+		<h:panelGroup rendered="#{not empty facesContext.messageList}">
+	        <div class="alert alert-success">
+		        <button type="button" class="close" data-dismiss="alert">x</button>
+		        <h:messages styleClass="unstyled"  />
+       		</div>
+        </h:panelGroup>
+       
+       <div class="container">
+        		<h1>
+		<h:outputText value="Listar Alugueis" />
+		</h1>
+		<legend></legend>
+        
+		<h:dataTable styleClass="table table-striped table-bordered table-hover" 
+			value="#{repositorio.alugueis}" var="alugar"
+			rendered="#{not empty repositorio.alugueis}">
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="ID Aluguel" class="label label-info" />
+				</f:facet>
+				<h:outputText value="#{alugar.idAluguel}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="ID Copia" class="label label-info"/>
+				</f:facet>
+				<h:outputText value="#{alugar.idCopia}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="ID Cliente" class="label label-info"/>
+				</f:facet>
+				<h:outputText value="#{alugar.idCliente}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Data Aluguel" class="label label-info"/>
+				</f:facet>
+				<h:outputText value="#{alugar.dataAluguel}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Data Devolução" class="label label-info"/>
+				</f:facet>
+				<h:outputText value="#{alugar.dataDevolucao}" />
+			</h:column>
+				
+			<h:column>
+			<f:facet name="header">
+				<h:outputLabel value="Opções" class="label label-info" />
+			</f:facet>
+				<h:form>
+				<div class="btn-group">
+				<h:commandButton value="Realizar Devolução" action="#{aluguelBean.devolver}" styleClass="btn btn btn-small btn-primary"
+				onclick="return confirm ('CONFIRME PARA REALIZAR A DEVOLUÇÃO')">
+				<f:setPropertyActionListener target="#{aluguelBean.indice}" value="#{alugar.idAluguel}" />
+				<f:setPropertyActionListener target="#{aluguelBean.aluguel2.idCopia}" value="#{alugar.idCopia}" />
+				</h:commandButton>
+				
+				</div>
+				</h:form>
+				
+			</h:column>
+
+		</h:dataTable>
+				<div class="form-actions">
+				<h:form>
+				<h:commandButton value="Alugar" action="alugar2"
+				   styleClass="btn btn-primary" />
+		</h:form>
+		</div>
+		</div>
+
+
+    </h:body>
+</html>

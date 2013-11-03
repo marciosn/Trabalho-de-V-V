@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+ 
+    <h:head>
+    		<title>Inserir Titulos</title>
+    		<h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+    		<h:outputStylesheet library="css" name="bootstrap-responsive.css"></h:outputStylesheet>
+			<h:outputScript library="js" name="jquery.js"></h:outputScript>
+			<h:outputScript library="js" name="bootstrap.js"></h:outputScript>
+			
+			<style type="text/css">
+			
+			body{
+				margin: 20px;
+			}
+			.container{
+			margin-top: 80px;
+			}
+
+			</style>
+			
+    </h:head>
+ 
+    <h:body>
+       <ui:insert name="conteudo">
+			<ui:include src="/WEB-INF/templates/topo.xhtml" />
+		</ui:insert>
+    <div class="container">
+    <h1>Inserir Cópia</h1>
+    <legend></legend>
+    <h:messages />
+    	<h:form >
+    		<h:panelGrid columns="2">
+    			<h:outputLabel value="Titulo da Copia" />
+    			<h:inputText value="#{titulosBean.copia.titulo}" class="input-xlarge"/>
+    			<h:outputLabel value="Estado da Copia" />
+    			<h:selectOneMenu value="#{titulosBean.estadoSelecionado}" 
+    			id="estado" label="Estado do Titulo" required="true">
+    					<f:selectItem itemLabel="Selecione..."/>
+    					<f:selectItems value="#{titulosBean.estados}" var="estado" itemValue="#{estado}"
+    					itemLabel="#{estado.nome}" />
+    			</h:selectOneMenu>
+    		</h:panelGrid>
+    		<h:commandButton action="#{titulosBean.insereCopia2}" value="Salvar Copia"  class="btn btn-primary"/>
+    	</h:form>
+    </div> 
+    </h:body>
+</html>
